@@ -209,3 +209,17 @@
   color: #ffffff;
   border-color: #ce96f5;
 }
+
+@media screen and (min-width: 1000px) {
+  .map-container {
+    width: 1000px;
+    height: 1000px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .map-container {
+    width: 1200px;
+    height: 1200px;
+  }
+}
