@@ -21,13 +21,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.1s;
 }
 
 .map-image {
-  display: block;
-  width: 100%;
-  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .layer {
@@ -47,15 +46,166 @@
 }
 
 .layer-toggle {
-  padding: 8px 12px;
+  margin: 2px;
+  padding: 4px 10px;
   background: #f0f0f0;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-width: 4px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-.layer-toggle.active {
-  background: #4CAF50;
-  color: white;
-  border-color: #4CAF50;
+.ores {
+  margin: 2px 0px 2px 0px;
+}
+
+/* Button Styles */
+#info_box {
+  background: #1d2a34;
+  color: #fff;
+  border-color: #1d2a34;
+}
+
+#stone {
+  background: #e2e2e2;
+  color: #000;
+  border-color: #b1b1b1;
+}
+
+#Stone.active {
+  background: #b1b1b1;
+  color: #ffffff;
+  border-color: #b1b1b1;
+}
+
+#Oxite {
+  background: #d9e8f3;
+  color: #000;
+  border-color: #8fb6d4;
+}
+
+#Oxite.active {
+  background: #8fb6d4;
+  color: #000;
+  border-color: #8fb6d4;
+}
+
+#Sulfur {
+  background: #f1f1cf;
+  color: #000;
+  border-color: #dad851;
+}
+
+#Sulfur.active {
+  background: #dad851;
+  color: #000;
+  border-color: #dad851;
+}
+
+#Copper {
+  background: #f1d4be;
+  color: #000;
+  border-color: #da8a51;
+}
+
+#Copper.active {
+  background: #da8a51;
+  color: #000;
+  border-color: #da8a51;
+}
+
+#Iron {
+  background: #f0bcbc;
+  color: #000;
+  border-color: #dc5453;
+}
+
+#Iron.active {
+  background: #dc5453;
+  color: #ffffff;
+  border-color: #dc5453;
+}
+
+#Salt {
+  background: #fff4ff;
+  color: #000;
+  border-color: #ffd0ff;
+}
+
+#Salt.active {
+  background: #ffd0ff;
+  color: #000;
+  border-color: #ffd0ff;
+}
+
+#Coal {
+  background: #ffb3ff;
+  color: #000000;
+  border-color: #b900b9;
+}
+
+#Coal.active {
+  background: #b900b9;
+  color: #fff;
+  border-color: #b900b9;
+}
+
+#Silica {
+  background: #f1ffff;
+  color: #000;
+  border-color: #88ffff;
+}
+
+#Silica.active {
+  background: #88ffff;
+  color: #000;
+  border-color: #88ffff;
+}
+
+#Gold {
+  background: #d5ffb8;
+  color: #000;
+  border-color: #8ada51;
+}
+
+#Gold.active {
+  background: #8ada51;
+  color: #000;
+  border-color: #8ada51;
+}
+
+#Platinum {
+  background: #cbfeff;
+  color: #000;
+  border-color: #00fbff;
+}
+
+#Platinum.active {
+  background: #00fbff;
+  color: #000;
+  border-color: #00fbff;
+}
+
+#Aluminum {
+  background: #e6e0ff;
+  color: #000;
+  border-color: #8079dc;
+}
+
+#Aluminum.active {
+  background: #8079dc;
+  color: #ffffff;
+  border-color: #8079dc;
+}
+
+#Titanium {
+  background: #f5d9ff;
+  color: #000;
+  border-color: #ce96f5;
+}
+
+#Titanium.active {
+  background: #ce96f5;
+  color: #ffffff;
+  border-color: #ce96f5;
 }

@@ -17,7 +17,6 @@ python -m http.server --bind 127.0.0.1
         <button onclick="zoomIn()">Zoom In (+)</button>
         <button onclick="zoomOut()">Zoom Out (-)</button>
         <button onclick="resetZoom()">Reset</button>
-
     </div>
 
     <div class="map-container" id="mapContainer">
@@ -25,23 +24,58 @@ python -m http.server --bind 127.0.0.1
             <!-- Base map -->
             <img src="assets/images/Map_Olympus.png" class="map-image">
             
-            <!-- Image Layer 1 -->
-            <img src="assets/images/Map_Olympus  Info Box.png" class="layer" id="Info Box">
+            <!-- Info Box -->
+            <img src="assets/images/Map_Olympus  Info Box.png" class="layer" id="Info Box" style="display: block;">
 
-            <!-- Image Layer 2 -->
-            <img src="assets/images/Gold.png" class="layer" id="gold-layer" style="display: none;">
-            
-            <!-- Image Layer 3 -->
-            <img src="markers-overlay.png" class="layer" id="layer3" style="display: none;">
+            <!-- Basic Ores -->
+            <img src="assets/images/Stone.png" class="layer" id="stone-layer" style="display: block;">
+            <img src="assets/images/Oxite.png" class="layer" id="oxite-layer" style="display: block;">
+            <img src="assets/images/Sulfur.png" class="layer" id="sulfur-layer" style="display: block;">
+            <img src="assets/images/Copper.png" class="layer" id="copper-layer" style="display: block;">
+            <img src="assets/images/Iron.png" class="layer" id="iron-layer" style="display: block;">
+            <img src="assets/images/Salt.png" class="layer" id="salt-layer" style="display: block;">
+            <img src="assets/images/Coal.png" class="layer" id="coal-layer" style="display: block;">
+
+            <!-- Advanced Ores -->
+            <img src="assets/images/Silica.png" class="layer" id="silica-layer" style="display: block;">
+            <img src="assets/images/Gold.png" class="layer" id="gold-layer" style="display: block;">
+            <img src="assets/images/Platinum.png" class="layer" id="platinum-layer" style="display: block;">
+            <img src="assets/images/Aluminum.png" class="layer" id="aluminum-layer" style="display: block;">
+            <img src="assets/images/Titanium.png" class="layer" id="titanium-layer" style="display: block;">
         </div>
     </div>
 
-    <div class="controls">
-        <span style="margin-left: 20px;">Layers:</span>
-        <button class="layer-toggle active" onclick="toggleLayer('Info Box')">Info Box</button>
-        <button class="layer-toggle" onclick="toggleLayer('gold-layer')">Gold</button>
-        <button class="layer-toggle" onclick="toggleLayer('layer3')">Markers</button>
-    </div>
+    <section class="controls container-fluid">
+        <div class="row justify-content-center g-2">
+            <div class="col-12 text-center">
+                <button class="layer-toggle active" id="info_box" onclick="toggleLayer('Info Box')">Info Box</button>
+            </div>
+
+            <div class="col-12 text-center">
+                <div class="ores">
+                    <span style="margin-left: 20px;">Basic Ores:</span>
+                    <button class="layer-toggle active" id="Stone" onclick="toggleLayer('stone-layer')">Stone</button>
+                    <button class="layer-toggle active" id="Oxite" onclick="toggleLayer('oxite-layer')">Oxite</button>
+                    <button class="layer-toggle active" id="Sulfur" onclick="toggleLayer('sulfur-layer')">Sulfur</button>
+                    <button class="layer-toggle active" id="Copper" onclick="toggleLayer('copper-layer')">Copper</button>
+                    <button class="layer-toggle active" id="Iron" onclick="toggleLayer('iron-layer')">Iron</button>
+                    <button class="layer-toggle active" id="Salt" onclick="toggleLayer('salt-layer')">Salt</button>
+                    <button class="layer-toggle active" id="Coal" onclick="toggleLayer('coal-layer')">Coal</button>
+                </div>
+            </div>
+
+            <div class="col-12 text-center">
+                <div class="ores">
+                    <span style="margin-left: 20px;">Advanced Ores:</span>
+                    <button class="layer-toggle active" id="Silica" onclick="toggleLayer('silica-layer')">Silica</button>
+                    <button class="layer-toggle active" id="Gold" onclick="toggleLayer('gold-layer')">Gold</button>
+                    <button class="layer-toggle active" id="Platinum" onclick="toggleLayer('platinum-layer')">Platinum</button>
+                    <button class="layer-toggle active" id="Aluminum" onclick="toggleLayer('aluminum-layer')">Aluminum</button>
+                    <button class="layer-toggle active" id="Titanium" onclick="toggleLayer('titanium-layer')">Titanium</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
         let scale = 1;
@@ -130,5 +164,6 @@ python -m http.server --bind 127.0.0.1
         wrapper.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
         }
     </script>
-</body>
+
+    </body>
 </html>
