@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icarus Map</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<!-- Terminal --
+cd .\Icarus_Map\
+python -m http.server --bind 127.0.0.1 
+-->
+
+<body>
+    <div class="controls">
+        <button onclick="zoomIn()">Zoom In (+)</button>
+        <button onclick="zoomOut()">Zoom Out (-)</button>
+        <button onclick="resetZoom()">Reset</button>
+
+    </div>
+
+    <div class="map-container" id="mapContainer">
+        <div class="map-wrapper" id="mapWrapper">
+            <!-- Base map -->
+            <img src="assets/images/Map_Olympus.png" class="map-image">
+            
+            <!-- Image Layer 1 -->
+            <img src="assets/images/Map_Olympus  Info Box.png" class="layer" id="Info Box">
+
+            <!-- Image Layer 2 -->
+            <img src="assets/images/Gold.png" class="layer" id="gold-layer" style="display: none;">
+            
+            <!-- Image Layer 3 -->
+            <img src="markers-overlay.png" class="layer" id="layer3" style="display: none;">
+        </div>
+    </div>
+
+    <div class="controls">
+        <span style="margin-left: 20px;">Layers:</span>
+        <button class="layer-toggle active" onclick="toggleLayer('Info Box')">Info Box</button>
+        <button class="layer-toggle" onclick="toggleLayer('gold-layer')">Gold</button>
+        <button class="layer-toggle" onclick="toggleLayer('layer3')">Markers</button>
+    </div>
+
+    <script>
+        let scale = 1;
+        let panning = false;
+        let pointX = 0;
+        let pointY = 0;
+        let start = { x: 0, y: 0 };
+
+        const container = document.getElementById('mapContainer');
+        const wrapper = document.getElementById('mapWrapper');
+
+        // Layer visibility state
+        const layerStates = {
+        layer1: true,
+        layer2: false,
+        layer3: false
+        };
+
+        // Toggle layer visibility
+        function toggleLayer(layerId) {
+        const layer = document.getElementById(layerId);
+        const button = event.target;
+        
+        layerStates[layerId] = !layerStates[layerId];
+        
+        if (layerStates[layerId]) {
+            layer.style.display = 'block';
+            button.classList.add('active');
+        } else {
+            layer.style.display = 'none';
+            button.classList.remove('active');
+        }
+        }
+
+        // Zoom functions
+        function zoomIn() {
+        scale *= 1.2;
+        updateTransform();
+        }
+
+        function zoomOut() {
+        scale /= 1.2;
+        if (scale < 1) scale = 1;
+        updateTransform();
+        }
+
+        function resetZoom() {
+        scale = 1;
+        pointX = 0;
+        pointY = 0;
+        updateTransform();
+        }
+
+        // Mouse wheel zoom
+        container.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? 0.9 : 1.1;
+        scale *= delta;
+        if (scale < 1) scale = 1;
+        updateTransform();
+        });
+
+        // Pan functionality
+        container.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        start = { x: e.clientX - pointX, y: e.clientY - pointY };
+        panning = true;
+        });
+
+        container.addEventListener('mousemove', (e) => {
+        if (!panning) return;
+        pointX = e.clientX - start.x;
+        pointY = e.clientY - start.y;
+        updateTransform();
+        });
+
+        container.addEventListener('mouseup', () => {
+        panning = false;
+        });
+
+        container.addEventListener('mouseleave', () => {
+        panning = false;
+        });
+
+        function updateTransform() {
+        wrapper.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+        }
+    </script>
+</body>
+</html>
